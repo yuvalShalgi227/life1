@@ -20,7 +20,11 @@ const App = () => {
     <div className={"app"}>
       <div className={"title-wrapper"}>
         <h1>Game of life</h1>
-
+        {active ? (
+          <h5>Game of life in running</h5>
+        ) : (
+          <h5>Click a few connected cells, then press 'Start'</h5>
+        )}
         <div className={"button-wrapper"}>
           <button onClick={changeStatus}>{status}</button>
         </div>
@@ -29,11 +33,6 @@ const App = () => {
         <Grid grid={grid} handleGridClick={handleGridClick} />
       </div>
       <div className={"lower-wrapper"}>
-        {active ? (
-          <h2>Game of life in running</h2>
-        ) : (
-          <h2>Click a few connected cells, then press 'Start'</h2>
-        )}
         <a
           href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
           target="_blank"
