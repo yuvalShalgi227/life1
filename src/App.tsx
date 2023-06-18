@@ -20,6 +20,7 @@ const App = () => {
     <div className={"app"}>
       <div className={"title-wrapper"}>
         <h1>Game of life</h1>
+
         <div className={"button-wrapper"}>
           <button onClick={changeStatus}>{status}</button>
         </div>
@@ -27,6 +28,11 @@ const App = () => {
       <div className={"grid-wrapper"}>
         <Grid grid={grid} handleGridClick={handleGridClick} />
       </div>
+      {active ? (
+        <h2>Game of life in running</h2>
+      ) : (
+        <h2>click a cell to make it alive</h2>
+      )}
     </div>
   );
 };

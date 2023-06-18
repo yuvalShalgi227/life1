@@ -5,6 +5,11 @@ export const UseLife = () => {
     const array2D = new Array(size)
       .fill(false)
       .map(() => new Array(size).fill(false));
+    array2D[10][10] = true;
+    array2D[10][11] = true;
+    array2D[10][12] = true;
+    array2D[9][12] = true;
+    array2D[8][11] = true;
     return array2D;
   };
   const [active, setActive] = useState<boolean>(false);
@@ -65,8 +70,8 @@ export const UseLife = () => {
   };
 
   const handleGridClick = (i: number, j: number) => {
-    console.log("handle grid click", active);
-    if (active) return;
+    // console.log("handle grid click", active);
+    // if (active) return;
     const newGrid = grid.map((row, index) =>
       row.map((cell, cellIndex) => {
         if (index === i && cellIndex === j) {
