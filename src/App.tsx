@@ -32,7 +32,7 @@ const App = () => {
         {active ? (
           <h2>Game of life in running</h2>
         ) : (
-          <h2>Click a few cells, then press 'start'</h2>
+          <h2>Click a few adjacent cells, then press 'Start'</h2>
         )}
         <a
           href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
