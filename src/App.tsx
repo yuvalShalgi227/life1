@@ -10,7 +10,7 @@ const App = () => {
       if (active) {
         nextTurn();
       }
-    }, 100);
+    }, 200);
     return () => clearInterval(interval);
   }, [nextTurn, active]);
   const changeStatus = () => {

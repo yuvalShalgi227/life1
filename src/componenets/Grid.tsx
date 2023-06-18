@@ -10,11 +10,14 @@ export const Grid = ({
   return (
     <>
       {grid.map((row, i) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         return row.map((col, j) => {
+          const life = grid[i][j] ? "alive" : "dead"; // Use grid[i][j] instead of col
           return (
             <div
               onClick={() => handleGridClick(i, j)}
-              className={`cell ${col ? "alive" : "dead"}`}
+              className={`cell ${grid[i][j] ? "alive" : "dead"}`} // Use grid[i][j] instead of col
               key={`${i}-${j}`}
             ></div>
           );

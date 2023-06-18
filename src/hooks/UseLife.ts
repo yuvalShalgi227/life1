@@ -10,39 +10,57 @@ export const UseLife = () => {
   const [active, setActive] = useState<boolean>(false);
   const [grid, setGrid] = useState<boolean[][]>(initGrid());
 
-  const getNeighbors = (grid: boolean[][], i: number, j: number): number => {
+  const getNeighbors = (i: number, j: number) => {
+    const rows = grid.length;
+    const columns = grid[0].length;
     let neighbors = 0;
-    if (grid[i - 1]?.[j - 1]) neighbors++;
-    if (grid[i - 1]?.[j]) neighbors++;
-    if (grid[i - 1]?.[j + 1]) neighbors++;
-    if (grid[i]?.[j - 1]) neighbors++;
-    if (grid[i]?.[j + 1]) neighbors++;
-    if (grid[i + 1]?.[j - 1]) neighbors++;
-    if (grid[i + 1]?.[j]) neighbors++;
-    if (grid[i + 1]?.[j + 1]) neighbors++;
+
+    // Check the top-left neighbor
+    if (i - 1 >= 0 && j - 1 >= 0 && grid[i - 1][j - 1]) neighbors++;
+
+    // Check the top neighbor
+    if (i - 1 >= 0 && grid[i - 1][j]) neighbors++;
+
+    // Check the top-right neighbor
+    if (i - 1 >= 0 && j + 1 < columns && grid[i - 1][j + 1]) neighbors++;
+
+    // Check the left neighbor
+    if (j - 1 >= 0 && grid[i][j - 1]) neighbors++;
+
+    // Check the right neighbor
+    if (j + 1 < columns && grid[i][j + 1]) neighbors++;
+
+    // Check the bottom-left neighbor
+    if (i + 1 < rows && j - 1 >= 0 && grid[i + 1][j - 1]) neighbors++;
+
+    // Check the bottom neighbor
+    if (i + 1 < rows && grid[i + 1][j]) neighbors++;
+
+    // Check the bottom-right neighbor
+    if (i + 1 < rows && j + 1 < columns && grid[i + 1][j + 1]) neighbors++;
+
     return neighbors;
   };
   const nextTurn = () => {
     const newGrid = grid.map((row, i) =>
       row.map((cell, j) => {
-        const neighbors = getNeighbors(grid, i, j);
+        const neighbors = getNeighbors(i, j);
         if (cell) {
-          if (neighbors < 2) {
-            return false;
-          } else if (neighbors > 3) {
-            return false;
+          if (neighbors < 2 || neighbors > 3) {
+            return false; // Cell dies due to underpopulation or overpopulation
           } else {
-            return true;
+            return true; // Cell stays alive
           }
-        }
-        if (!cell && neighbors === 3) {
-          return true;
+        } else {
+          if (neighbors === 3) {
+            return true; // Cell becomes alive due to reproduction
+          } else {
+            return false; // Cell remains dead
+          }
         }
       })
     );
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     setGrid(newGrid);
   };
 
