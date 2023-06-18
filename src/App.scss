@@ -71,6 +71,6 @@ body {
 @media screen and (max-width: 600px) {
   .grid-wrapper {
     width: 80vw;
-    height: 65vh;
+    height: 65vh !important;
   }
 }
