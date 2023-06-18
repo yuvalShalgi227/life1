@@ -28,11 +28,21 @@ const App = () => {
       <div className={"grid-wrapper"}>
         <Grid grid={grid} handleGridClick={handleGridClick} />
       </div>
-      {active ? (
-        <h2>Game of life in running</h2>
-      ) : (
-        <h2>click a cell to make it alive</h2>
-      )}
+      <div className={"lower-wrapper"}>
+        {active ? (
+          <h2>Game of life in running</h2>
+        ) : (
+          <h2>Click a few cells, then press 'start'</h2>
+        )}
+        <a
+          href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ fontSize: "14px" }}
+        >
+          Learn more about the Game of Life on Wikipedia
+        </a>
+      </div>
     </div>
   );
 };

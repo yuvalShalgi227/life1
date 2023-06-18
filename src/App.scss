@@ -25,6 +25,9 @@ body {
   .title-wrapper {
     //width: 100%;
     //background-color: chocolate;
+    h1 {
+      margin: 1rem;
+    }
   }
 
   .grid-wrapper {
@@ -46,6 +49,13 @@ body {
         background-color: black;
       }
     }
+  }
+  .lower-wrapper {
+    h2 {
+      color: grey;
+      margin: 0;
+    }
+    margin-bottom: 1rem;
   }
 }
 
