@@ -13,7 +13,6 @@ export const Grid = ({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return row.map((col, j) => {
-          const life = grid[i][j] ? "alive" : "dead"; // Use grid[i][j] instead of col
           return (
             <div
               onClick={() => handleGridClick(i, j)}
